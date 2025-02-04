@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { Bell, MessageCircle } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Bell, Check, ChevronDown } from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,10 +10,36 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import Image from "next/image";
+  DropdownMenuCheckboxItem,
+} from "@/components/ui/dropdown-menu"
+import { Checkbox } from "@/components/ui/checkbox"
+
+import Image from "next/image"
+import { useState } from "react"
+
+const languages = [
+  
+  {
+    code: "fr",
+    name: "French",
+    flag: "assets/svgs/french-flag.svg",
+  },
+  
+  {
+    code: "cn",
+    name: "Chinese",
+    flag: "assets/svgs/chinese-flag.svg",
+  },
+  {
+    code: "en",
+    name: "English",
+    flag: "assets/svgs/uk-flag.svg",
+  }
+]
 
 export function Navbar() {
+  const [selectedLang, setSelectedLang] = useState("en")
+
   return (
     <div className="border-b bg-white">
       <div className="flex h-16 items-center px-4">
@@ -23,20 +49,49 @@ export function Navbar() {
           </Avatar>
           <h1 className="text-xl font-semibold">School Name</h1>
         </div>
-        <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-2">
-                  <span>English</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>English</DropdownMenuItem>
-                <DropdownMenuItem>Japanese</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+
         <div className="ml-auto flex items-center gap-x-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-2 h-9 px-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-5 h-5 rounded-full overflow-hidden ">
+                    <Image
+                      src={languages.find((l) => l.code === selectedLang)?.flag || languages[0].flag}
+                      alt="Language flag"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <span className="text-sm">{languages.find((l) => l.code === selectedLang)?.name || "English"}</span>
+                  <ChevronDown className="h-4 w-4 opacity-50" />
+                </div>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-[180px] cursor-pointer">
+  {languages.map((lang) => (
+    <div key={lang.code} className="flex items-center gap-4 py-1 ">
+      <Checkbox
+        checked={selectedLang === lang.code}
+        onCheckedChange={() => setSelectedLang(lang.code)}
+        className="ml-2"
+      />
+      <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+        <Image
+          src={lang.flag || "/placeholder.svg"}
+          alt={`${lang.name} flag`}
+          width={20}
+          height={20}
+        />
+      </div>
+      {lang.name}
+    </div>
+  ))}
+</DropdownMenuContent>
+
+          </DropdownMenu>
           <Button variant="ghost" size="icon">
-          <Image src="assets/svgs/sms.svg" alt="bell-icon"  width={40} height={40}/>
+            <Image src="assets/svgs/sms.svg" alt="Messages" width={40} height={40} />
           </Button>
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
@@ -44,34 +99,29 @@ export function Navbar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
-                <AvatarImage src="assets/svgs/profile.svg" alt="Admin" />Admin
+               <Avatar className="h-8 w-8">
+  <AvatarImage src="assets/svgs/profile.svg" alt="Admin" />
+</Avatar>
+<span className="text-sm ml-2">Admin</span>
+<ChevronDown className="h-4 w-4 opacity-50" />
 
-                  <AvatarFallback>Admin</AvatarFallback>
-                </Avatar>
               </Button>
-              
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Admin</p>
-                  <p className="text-xs leading-none text-muted-foreground">
-                    admin@school.com
-                  </p>
+                  <p className="text-xs leading-none text-muted-foreground">admin@school.com</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                Profile Settings
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                Sign out
-              </DropdownMenuItem>
+              <DropdownMenuItem>Profile Settings</DropdownMenuItem>
+              <DropdownMenuItem>Sign out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </div>
     </div>
-  );
+  )
 }
+
