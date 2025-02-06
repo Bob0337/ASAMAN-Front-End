@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-poppins: "Poppins", sans-serif;
+  --font-jost: "Jost", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +79,9 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    font-family: var(--font-poppins);
+  }
+  .jost {
+    font-family: var(--font-jost);
   }
 }

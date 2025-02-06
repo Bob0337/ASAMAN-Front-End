@@ -1,13 +1,14 @@
 "use client";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ReactSVG } from "react-svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation';
+import { useCallback } from "react";
+import "./Sidebar.css"
 const sidebarLinks = [
   {
     title: "Dashboard",
@@ -44,12 +45,16 @@ const sidebarLinks = [
 
 interface SidebarProps {
   isCollapsed: boolean;
-  setIsCollapsed: (value: boolean) => void; // Pass state setter to toggle sidebar
+  setIsCollapsed: (value: boolean) => void;
 }
 
 export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
+  
   const pathname = usePathname();
-
+  const router = useRouter();
+  const handleNavigation = useCallback((href: string) => {
+    router.push(href);
+  }, [router]);
   return (
     <div
       className={cn(
@@ -73,32 +78,60 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
       {/* Sidebar Links */}
       <ScrollArea className="flex-1 pt-4">
         <div className="space-y-2 px-2">
-          {sidebarLinks.map((link) => (
-            <Link
+        {sidebarLinks.map((link) => (
+            <button
               key={link.href}
-              href={link.href}
-              className={cn(
-                "group flex items-center gap-x-2 rounded-lg px-4 py-2 text-sm font-medium hover:bg-[#011892] hover:text-white",
+              onClick={() => handleNavigation(link.href)}
+              className={cn(  
+                "sidebar-button group flex w-full items-center gap-x-2 rounded-lg px-4 py-2 text-sm font-medium hover:bg-[#011892] hover:text-white",
                 pathname === link.href
-                  ? "bg-[#011892] text-white"
-                  : "text-slate-600",
+                  ? "active bg-[#011892] text-white"
+                  : "text-[#000000]",
                 isCollapsed && "justify-center",
               )}
             >
               <ReactSVG
                 src={link.icon}
-                className={cn(
-                  "h-5 w-5 text-current transition-colors", 
-                  pathname === link.href ? "text-white" : "text-black",
-                  "group-hover:text-white",
-                )}
+                beforeInjection={(svg) => {
+                  svg.classList.add('sidebar-icon');
+                  svg.setAttribute('style', 'width: 18px; height: 18px;');
+                }}
+                className="transition-colors"
               />
-
               {!isCollapsed && <span>{link.title}</span>}
-            </Link>
+            </button>
           ))}
         </div>
       </ScrollArea>
+      {/* <ScrollArea className="flex-1 pt-4">
+        <div className="space-y-2 px-2">
+        {sidebarLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleNavigation(link.href)}
+              className={cn(  
+                "group flex w-full items-center gap-x-2 rounded-lg px-4 py-2 text-sm font-medium hover:bg-[#011892] hover:text-white",
+                pathname === link.href
+                  ? "bg-[#011892] text-white"
+                  : "text-[#000000]",
+                isCollapsed && "justify-center",
+              )}
+            >
+              <ReactSVG
+                src={link.icon}
+                beforeInjection={(svg) => {
+                  svg.setAttribute('style', 'width: 18px; height: 18px;');
+                }}
+                className={cn(
+                  "transition-colors",
+                  pathname === link.href ? "text-white" : "text-[#000000] group-hover:text-white",
+                )}
+              />
+              {!isCollapsed && <span>{link.title}</span>}
+            </button>
+            ))}
+        </div>
+      </ScrollArea> */}
 
       {/* Logout Button */}
       <div className="mt-auto p-4">
@@ -109,7 +142,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
             isCollapsed && "justify-center",
           )}
         >
-          <ReactSVG src="/assets/svgs/logout.svg" className="h-5 w-5" />
+          <ReactSVG src="/assets/svgs/logout.svg" className="h-5 w-5 " />
           {!isCollapsed && <span>Logout</span>}
         </Button>
       </div>

@@ -22,20 +22,20 @@ export function MetricCard({
 }: MetricCardProps) {
   return (
     <Card className={cn("transition-shadow hover:shadow-md", className)}>
-      <CardContent className="p-6">
+      <CardContent className="p-4">
         <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <p className="text-sm font-medium text-muted-foreground">{title}</p>
-            <h2 className="text-3xl font-bold">{value}</h2>
+          <div className="space-y-3 w-full ">
+            <p className="text-sm text-[#000000] font-medium  whitespace-nowrap">{title}</p>
+            <h2 className="text-[26px] text-[#011892] font-semibold block">{value}</h2>
             <a
               href={link.href}
-              className="text-sm text-blue-600 hover:underline"
+              className="text-sm text-[#1895AF] hover:underline"
             >
               {link.text}
             </a>
           </div>
-          <div className="h-12 w-12">
-            <Image
+          <div className="h-12 w-12 flex-shrink-0">
+          <Image
               src={icon || "/placeholder.svg"}
               alt={title}
               width={48}

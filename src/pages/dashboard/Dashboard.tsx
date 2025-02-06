@@ -12,9 +12,8 @@ import { DocumentsList } from "@/components/document-list/DocumentList";
 import { PaymentChart } from "@/components/payment-chart/PaymentChart";
 import { UpcomingActivities } from "@/components/upcoming-activities/UpcomingActivities";
 import { ActivityEnrollment } from "@/components/activity-enrollment/ActivityEnrollment";
-const inter = Inter({ subsets: ["latin"] });
 
-export default function Dashboard({ children }: { children: React.ReactNode }) {
+export default function Dashboard() {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
@@ -26,7 +25,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
         {/* Main Content */}
         <div className="flex flex-1 flex-col overflow-y-auto">
           <Navbar />
-          <div className="flex-1 space-y-4 p-4 pt-6 md:p-8">
+          <div className="flex-1 space-y-4 p-4 pt-6 md:p-8 bg-[#F5F5FA]">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <MetricCard
                 title="Students"

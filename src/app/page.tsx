@@ -1,11 +1,5 @@
+import Dashboard from "@/pages/dashboard/Dashboard";
 
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
-  return (
-    <div>
-      Asman Project
-
-    </div>
-  );
+export default function DashboardPage() {
+  return <Dashboard />;
 }

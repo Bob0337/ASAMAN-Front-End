@@ -78,10 +78,10 @@ export function Navbar() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className="w-[180px] cursor-pointer"
+              className="w-[180px] "
             >
               {languages.map((lang) => (
-                <div key={lang.code} className="flex items-center gap-4 py-1">
+                <div key={lang.code} className="flex items-center gap-4 py-1 cursor-pointer"   onClick={() => setSelectedLang(lang.code)}>
                   <Checkbox
                     checked={selectedLang === lang.code}
                     onCheckedChange={() => setSelectedLang(lang.code)}
@@ -113,7 +113,7 @@ export function Navbar() {
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Button variant="ghost" className="relative h-8 w-auto rounded-full">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="assets/svgs/profile.svg" alt="Admin" />
                 </Avatar>

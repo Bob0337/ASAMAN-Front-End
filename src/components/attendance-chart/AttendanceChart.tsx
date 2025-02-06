@@ -53,9 +53,9 @@ export function AttendanceChart() {
   const [selectedYear, setSelectedYear] = useState(currentYear.toString());
 
   return (
-    <Card className="overflow-hidden bg-white">
+    <Card className="overflow-hidden bg-white p-0">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
-        <CardTitle className="text-base font-normal text-gray-600">
+        <CardTitle className="text-base font-normal text-[#000000]">
           Attendance
         </CardTitle>
         <div className="flex gap-2">
@@ -88,7 +88,7 @@ export function AttendanceChart() {
           </Select>
         </div>
       </CardHeader>
-      <CardContent className="pb-4">
+      <CardContent  className="p-4">
         <div className="h-[250px] w-full min-w-[270px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart

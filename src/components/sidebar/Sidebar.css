@@ -1,0 +1,17 @@
+.sidebar-icon {
+    transition: filter 0.3s ease;
+  }
+  
+  .sidebar-icon path {
+    transition: fill 0.3s ease;
+  }
+  
+  .sidebar-button:hover .sidebar-icon,
+  .sidebar-button.active .sidebar-icon {
+    filter: brightness(0) invert(1);
+  }
+  
+  .sidebar-button:hover .sidebar-icon path,
+  .sidebar-button.active .sidebar-icon path {
+    fill: white;
+  }
