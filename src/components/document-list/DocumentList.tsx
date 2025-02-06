@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileText } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FileText } from "lucide-react";
 
 const documents = [
   {
@@ -14,7 +14,7 @@ const documents = [
     title: "Class E attendance sheet",
     date: "01 Oct, 08:20AM",
   },
-]
+];
 
 export function DocumentsList() {
   return (
@@ -39,6 +39,5 @@ export function DocumentsList() {
         ))}
       </CardContent>
     </Card>
-  )
+  );
 }
-

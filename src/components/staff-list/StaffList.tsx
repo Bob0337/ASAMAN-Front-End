@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const staffMembers = [
   {
@@ -23,7 +23,7 @@ const staffMembers = [
     time: "04:30 pm",
     initials: "T",
   },
-]
+];
 
 export function StaffList() {
   return (
@@ -34,11 +34,13 @@ export function StaffList() {
           View all
         </a>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 p-2">
         {staffMembers.map((staff) => (
           <div key={staff.id} className="flex items-center gap-4">
             <Avatar className="h-10 w-10 bg-blue-100">
-              <AvatarFallback className="text-blue-700">{staff.initials}</AvatarFallback>
+              <AvatarFallback className="text-blue-700">
+                {staff.initials}
+              </AvatarFallback>
             </Avatar>
             <div className="flex-1 space-y-1">
               <p className="text-sm font-medium leading-none">{staff.name}</p>
@@ -49,6 +51,5 @@ export function StaffList() {
         ))}
       </CardContent>
     </Card>
-  )
+  );
 }
-
