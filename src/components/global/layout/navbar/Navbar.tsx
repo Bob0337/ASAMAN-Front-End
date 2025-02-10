@@ -76,18 +76,19 @@ export function Navbar() {
                 </div>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className="w-[180px] "
-            >
+            <DropdownMenuContent align="end" className="w-[180px]">
               {languages.map((lang) => (
-                <div key={lang.code} className="flex items-center gap-4 py-1 cursor-pointer"   onClick={() => setSelectedLang(lang.code)}>
+                <div
+                  key={lang.code}
+                  className="flex cursor-pointer items-center gap-4 py-1"
+                  onClick={() => setSelectedLang(lang.code)}
+                >
                   {/* <Checkbox
                     checked={selectedLang === lang.code}
                     onCheckedChange={() => setSelectedLang(lang.code)}
                     className="ml-2"
                   /> */}
-                  <div className="h-5 w-5 ml-2 flex-shrink-0 overflow-hidden rounded-full">
+                  <div className="ml-2 h-5 w-5 flex-shrink-0 overflow-hidden rounded-full">
                     <Image
                       src={lang.flag || "/placeholder.svg"}
                       alt={`${lang.name} flag`}
@@ -113,7 +114,10 @@ export function Navbar() {
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-auto rounded-full">
+              <Button
+                variant="ghost"
+                className="relative h-8 w-auto rounded-full hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="assets/svgs/profile.svg" alt="Admin" />
                 </Avatar>
@@ -121,6 +125,7 @@ export function Navbar() {
                 <ChevronDown className="h-4 w-4 opacity-50" />
               </Button>
             </DropdownMenuTrigger>
+
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">

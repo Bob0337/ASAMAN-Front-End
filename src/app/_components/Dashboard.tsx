@@ -1,17 +1,17 @@
 "use client";
 
-import { Navbar } from "@/components/navbar/Navbar";
+import { Navbar } from "@/components/global/layout/navbar/Navbar";
 import { Inter } from "next/font/google";
 
-import { Sidebar } from "@/components/sidebar/Sidebar";
+import { Sidebar } from "@/components/global/layout/sidebar/Sidebar";
 import React, { useState } from "react";
-import { MetricCard } from "@/components/matricCard/MatricCard";
-import { AttendanceChart } from "@/components/attendance-chart/AttendanceChart";
-import { StaffList } from "@/components/staff-list/StaffList";
-import { DocumentsList } from "@/components/document-list/DocumentList";
-import { PaymentChart } from "@/components/payment-chart/PaymentChart";
-import { UpcomingActivities } from "@/components/upcoming-activities/UpcomingActivities";
-import { ActivityEnrollment } from "@/components/activity-enrollment/ActivityEnrollment";
+import { MetricCard } from "@/app/_components/matricCard/MatricCard";
+import { AttendanceChart } from "@/app/_components/attendance-chart/AttendanceChart";
+import { StaffList } from "@/app/_components/staff-list/StaffList";
+import { DocumentsList } from "@/app/_components/document-list/DocumentList";
+import { PaymentChart } from "@/app/_components/payment-chart/PaymentChart";
+import { UpcomingActivities } from "@/app/_components/upcoming-activities/UpcomingActivities";
+import { ActivityEnrollment } from "@/app/_components/activity-enrollment/ActivityEnrollment";
 
 export default function Dashboard() {
   const [isCollapsed, setIsCollapsed] = useState(false);
