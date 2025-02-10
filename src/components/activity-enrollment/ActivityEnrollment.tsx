@@ -16,9 +16,12 @@ export function ActivityEnrollment() {
         <CardTitle className="text-base font-normal">
           Activity Enrollment
         </CardTitle>
+        <a href="#" className="text-sm font-semibold text-[#0052B4] hover:underline">
+          View all
+        </a>
       </CardHeader>
       <CardContent className="space-y-6 p-2">
-        <ScrollArea className="h-[300px] w-full rounded-lg border border-gray-200 bg-gray-50">
+        <ScrollArea className="h-[300px] w-full rounded-lg ">
           {activities.map((activity) => (
             <div
               key={activity.name}
