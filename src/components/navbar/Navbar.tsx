@@ -1,7 +1,7 @@
 "use client";
 
-import { Bell, Check, ChevronDown } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Bell, ChevronDown } from "lucide-react";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -82,12 +82,12 @@ export function Navbar() {
             >
               {languages.map((lang) => (
                 <div key={lang.code} className="flex items-center gap-4 py-1 cursor-pointer"   onClick={() => setSelectedLang(lang.code)}>
-                  <Checkbox
+                  {/* <Checkbox
                     checked={selectedLang === lang.code}
                     onCheckedChange={() => setSelectedLang(lang.code)}
                     className="ml-2"
-                  />
-                  <div className="h-5 w-5 flex-shrink-0 overflow-hidden rounded-full">
+                  /> */}
+                  <div className="h-5 w-5 ml-2 flex-shrink-0 overflow-hidden rounded-full">
                     <Image
                       src={lang.flag || "/placeholder.svg"}
                       alt={`${lang.name} flag`}
