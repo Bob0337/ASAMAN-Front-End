@@ -1,13 +1,13 @@
 "use client";
 
-import { Sidebar } from "@/components/sidebar/Sidebar";
+import { Sidebar } from "@/components/global/layout/sidebar/Sidebar";
 import "./globals.css";
 import { Poppins, Jost } from "next/font/google";
-import { Navbar } from "@/components/navbar/Navbar";
+import { Navbar } from "@/components/global/layout/navbar/Navbar";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type React from "react";
-import Dashboard from "@/pages/dashboard/Dashboard";
+import Dashboard from "@/app/_components/Dashboard";
 
 const poppins = Poppins({
   subsets: ["latin"],
