@@ -40,7 +40,7 @@ export function Navbar() {
   const [selectedLang, setSelectedLang] = useState("en");
 
   return (
-    <div className="border-b bg-white">
+    <div className="border-b flex-1 bg-white">
       <div className="flex h-16 items-center px-4">
         <div className="flex items-center gap-x-2">
           <Avatar className="h-8 w-8">
