@@ -29,7 +29,7 @@ const RoleChip = ({ role }: { role: string }) => {
         roleType(role),
       )}
     >
-      {role}
+      {role.slice(0,1).toUpperCase() + role.slice(1)}
     </span>
   );
 };
