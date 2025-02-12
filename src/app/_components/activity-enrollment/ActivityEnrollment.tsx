@@ -1,12 +1,17 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ScrollArea } from "../ui/scroll-area";
+import { ScrollArea } from "../../../components/ui/scroll-area";
 
 const activities = [
   { name: "Activity 1", enrollment: "15 enrollment", progress: 32 },
   { name: "Activity 2", enrollment: "20 enrollment", progress: 43 },
   { name: "Activity 3", enrollment: "12 enrollment", progress: 67 },
   { name: "Class D", enrollment: "14 enrollment", progress: 56 },
+  { name: "Class D", enrollment: "14 enrollment", progress: 56 },
+  { name: "Class D", enrollment: "14 enrollment", progress: 56 },
+  { name: "Class D", enrollment: "14 enrollment", progress: 56 },
+  { name: "Class D", enrollment: "14 enrollment", progress: 56 },
+
 ];
 
 export function ActivityEnrollment() {
@@ -16,9 +21,13 @@ export function ActivityEnrollment() {
         <CardTitle className="text-base font-normal">
           Activity Enrollment
         </CardTitle>
+        <a href="#" className="text-sm font-semibold text-[#0052B4] hover:underline">
+          View all
+        </a>
       </CardHeader>
       <CardContent className="space-y-6 p-2">
-        <ScrollArea className="h-[300px] w-full rounded-lg border border-gray-200 bg-gray-50">
+        <ScrollArea className="h-[300px] w-full rounded-lg overflow-y-auto ">
+        <div className="pr-2"> 
           {activities.map((activity) => (
             <div
               key={activity.name}
@@ -56,6 +65,7 @@ export function ActivityEnrollment() {
               </div>
             </div>
           ))}
+          </div>
         </ScrollArea>
       </CardContent>
     </Card>

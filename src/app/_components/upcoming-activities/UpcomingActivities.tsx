@@ -28,11 +28,11 @@ export function UpcomingActivities() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <CardTitle className="text-base font-normal">Upcoming Activities</CardTitle>
-        <a href="#" className="text-sm text-blue-600 hover:underline">
+        <a href="#" className="text-sm font-semibold text-[#0052B4] hover:underline">
           View all
         </a>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 ">
         {activities.map((activity) => (
           <div key={activity.id} className="flex items-center gap-4 bg-[#F0F7FF] p-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1895AF] text-white font-medium">

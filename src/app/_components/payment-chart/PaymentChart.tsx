@@ -60,7 +60,7 @@ export function PaymentChart() {
 
         <div className="flex gap-2">
           <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-            <SelectTrigger className="h-7 w-[66px] min-w-[66px]">
+            <SelectTrigger className="flex h-7 w-[66px] min-w-[66px] items-center justify-between px-2 text-[10px]">
               <SelectValue placeholder="Select month" />
             </SelectTrigger>
             <SelectContent>
@@ -68,6 +68,7 @@ export function PaymentChart() {
                 <SelectItem
                   key={month.toLowerCase()}
                   value={month.toLowerCase()}
+                  className="text-[10px]"
                 >
                   {month}
                 </SelectItem>
@@ -75,12 +76,12 @@ export function PaymentChart() {
             </SelectContent>
           </Select>
           <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="h-7 w-[66px] min-w-[66px]">
+            <SelectTrigger className="flex h-7 w-[66px] min-w-[66px] items-center justify-between px-2 text-[10px]">
               <SelectValue placeholder="Select year" />
             </SelectTrigger>
             <SelectContent>
               {years.map((year) => (
-                <SelectItem key={year} value={year}>
+                <SelectItem key={year} value={year} className="text-[10px]">
                   {year}
                 </SelectItem>
               ))}
@@ -97,7 +98,7 @@ export function PaymentChart() {
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={data}
-              margin={{ top: 10, right: 20, bottom: 20, left: -30 }}
+              margin={{ top: 0, right: 0, bottom: 0, left: -10 }}
             >
               <XAxis
                 dataKey="name"
@@ -112,13 +113,13 @@ export function PaymentChart() {
                 fontSize={12}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(value) => `¥${value}`}
+                tickFormatter={(value) => `¥${value.toLocaleString()}`}
                 domain={[0, 6000]}
                 ticks={[0, 1000, 2000, 3000, 4000, 5000, 6000]}
               />
               <Bar
                 dataKey="amount"
-                fill="#0EA5E9"
+                fill="#1895AF"
                 radius={[4, 4, 0, 0]}
                 barSize={40}
               />
