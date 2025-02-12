@@ -6,20 +6,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
+  title: "sign up",
+  description: "sign up form",
 };
 
 export default function AuthenticationPage() {
   return (
-    <div className="flex min-h-screen flex-col lg:flex-row">
-      {/* Left Section - Logo */}
-      <div className="flex w-full items-center justify-center sm:bg-muted p-4 lg:w-1/2">
-        <Image src="/logo.svg" width={200} height={80} alt="asaman" />
-      </div>
+    <div className="flex min-h-screen flex-col lg:flex-row bg-muted">
+    <div className="flex h-full min-h-screen flex-col items-center justify-center bg-cover bg-center bg-muted lg:w-1/2">
+  <Image src="/logo.svg" width={200} height={80} alt="asaman" />
+  <h2 className="mt-4 text-center text-lg font-semibold text-gray-700">
+    School Activity and Event Management System
+  </h2>
+</div>
 
-      {/* Right Section - Form */}
-      <div className="flex flex-1 items-center justify-center p-6 lg:p-12">
+      <div className="flex flex-1 items-center justify-center p-6 lg:p-12 bg-white">
         <div className="w-full max-w-md space-y-6">
           <div className="text-center">
             <h1 className="text-2xl font-semibold">Create an account</h1>
@@ -39,7 +40,12 @@ export default function AuthenticationPage() {
             </div>
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
@@ -47,7 +53,12 @@ export default function AuthenticationPage() {
             </div>
             <div>
               <Label htmlFor="school-name">School Name</Label>
-              <Input id="school-name" type="text" placeholder="Enter school name" required />
+              <Input
+                id="school-name"
+                type="text"
+                placeholder="Enter school name"
+                required
+              />
             </div>
             <div>
               <Label htmlFor="school-image">School Image</Label>
@@ -55,7 +66,12 @@ export default function AuthenticationPage() {
             </div>
             <div>
               <Label htmlFor="address">Address</Label>
-              <Input id="address" type="text" placeholder="Enter address" required />
+              <Input
+                id="address"
+                type="text"
+                placeholder="Enter address"
+                required
+              />
             </div>
             <div>
               <Label htmlFor="city">City</Label>
@@ -63,21 +79,23 @@ export default function AuthenticationPage() {
             </div>
             <div>
               <Label htmlFor="province">Province</Label>
-              <Input id="province" type="text" placeholder="Enter province" required />
+              <Input
+                id="province"
+                type="text"
+                placeholder="Enter province"
+                required
+              />
             </div>
-           
+
             <Button type="submit" className="w-full">
               Sign up
             </Button>
           </form>
 
           <div className="text-center text-sm">
-          Already have an account?
-            <Link
-              href="/"
-              className="text-blue-600 hover:underline"
-            >
-               &nbsp;Login
+            Already have an account?
+            <Link href="/" className="text-blue-600 hover:underline">
+              &nbsp;Login
             </Link>
           </div>
 
