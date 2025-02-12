@@ -1,4 +1,4 @@
-import { LoginForm } from "@/app/authentication/login-form/page";
+import { LoginForm } from "@/app/(withoutLayout)/authentication/login-form/page";
 
 export default function Page() {
   return (

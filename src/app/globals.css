@@ -45,6 +45,15 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    --custom-primary: 230 99% 29%;
+    --custom-secondary: 190 76% 39%;
+    --staff-bg: 230 99% 29%;
+    --parent-bg: 190 76% 39%;
+    --communication-manager-bg: 269 63% 71%;
+    --external-manager-bg: 32 100% 57%;
+    --student-bg: 133 49% 52%;
+    --finance-bg: 230 65% 72%;
   }
   .dark {
     --background: 0 0% 3.9%;

@@ -49,7 +49,19 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+
+			// Custom Colors
+			custom_primary : 'hsl(var(--custom-primary))',
+			custom_secondary : 'hsl(var(--custom-secondary))',
+
+			// Staff Colors
+			staff_bg : 'hsl(var(--staff-bg))',
+			parent_bg : 'hsl(var(--parent-bg))',
+			communication_manager_bg : 'hsl(var(--communication-manager-bg))',
+			external_manager_bg : 'hsl(var(--external-manager-bg))',
+			student_bg : 'hsl(var(--student-bg))',
+			finance_bg : 'hsl(var(--finance-bg))',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
