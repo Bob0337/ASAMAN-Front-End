@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ReactSVG } from "react-svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useCallback } from "react";
 import "./Sidebar.css"
@@ -43,12 +43,12 @@ const sidebarLinks = [
   },
 ];
 
-interface SidebarProps {
-  isCollapsed: boolean;
-  setIsCollapsed: (value: boolean) => void;
-}
 
-export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
+
+export function Sidebar() {
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   
   const pathname = usePathname();
   const router = useRouter();

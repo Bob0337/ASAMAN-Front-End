@@ -23,8 +23,8 @@ const data = [
   { name: "Class A", value: 4 },
   { name: "Class B", value: 2 },
   { name: "Class C", value: 3.5 },
-  { name: "Class D", value: 2.8 },
-  { name: "Class E", value: 4.8 },
+  // { name: "Class D", value: 2.8 },
+  // { name: "Class E", value: 4.8 },
 ];
 
 const months = [
@@ -60,7 +60,7 @@ export function AttendanceChart() {
         </CardTitle>
         <div className="flex gap-2">
           <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-            <SelectTrigger className="h-7 w-[66px] min-w-[66px]">
+            <SelectTrigger className="flex h-7 w-[66px] min-w-[66px] items-center justify-between px-2 text-[10px]">
               <SelectValue placeholder="Select month" />
             </SelectTrigger>
             <SelectContent>
@@ -68,6 +68,7 @@ export function AttendanceChart() {
                 <SelectItem
                   key={month.toLowerCase()}
                   value={month.toLowerCase()}
+                  className="text-[10px]"
                 >
                   {month}
                 </SelectItem>
@@ -75,12 +76,12 @@ export function AttendanceChart() {
             </SelectContent>
           </Select>
           <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="h-7 w-[66px] min-w-[66px]">
+            <SelectTrigger className="flex h-7 w-[66px] min-w-[66px] items-center justify-between px-2 text-[10px]">
               <SelectValue placeholder="Select year" />
             </SelectTrigger>
             <SelectContent>
               {years.map((year) => (
-                <SelectItem key={year} value={year}>
+                <SelectItem key={year} value={year} className="text-[10px]">
                   {year}
                 </SelectItem>
               ))}
@@ -88,17 +89,17 @@ export function AttendanceChart() {
           </Select>
         </div>
       </CardHeader>
-      <CardContent  className="p-4">
+      <CardContent className="p-4">
         <div className="h-[250px] w-full min-w-[270px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={data}
-              margin={{ top: 10, right: 20, bottom: 20, left: -30 }}
+              margin={{ top: 10, right:   20, bottom: 0, left: 5 }}
             >
               <defs>
                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#0066FF" stopOpacity={0.2} />
-                  <stop offset="100%" stopColor="#0066FF" stopOpacity={0.05} />
+                  <stop offset="0%" stopColor="#0052B4" stopOpacity={0.8} />
+                  <stop offset="100%" stopColor="white" stopOpacity={0.2} />
                 </linearGradient>
               </defs>
               <CartesianGrid
@@ -122,6 +123,7 @@ export function AttendanceChart() {
                 domain={[0, 5]}
                 ticks={[1, 2, 3, 4, 5]}
                 dx={-10}
+                tickFormatter={(tick) => `Week ${tick}`}
               />
               <ChartTooltip />
               <Area

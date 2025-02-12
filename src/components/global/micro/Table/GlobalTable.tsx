@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TableColumns } from "@/app/user-management/table_data/columns";
+import { TableColumns } from "@/app/(withLayout)/user-management/table_data/columns";
 import { Column } from "@/types/interfaces";
 import { cn } from "@/lib/utils";
 
