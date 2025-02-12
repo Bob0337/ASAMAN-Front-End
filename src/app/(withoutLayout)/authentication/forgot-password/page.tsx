@@ -6,7 +6,7 @@ import { Button } from "../../../../components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-export function LoginForm({
+export default function ForgotPassword({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -23,9 +23,10 @@ export function LoginForm({
         <div className="flex flex-1 items-center justify-center p-6 lg:p-12">
           <div className="w-full max-w-md space-y-6">
             <div className="text-center">
-              <h1 className="text-2xl font-semibold">Login</h1>
+              <h1 className="text-2xl font-semibold"> Forgot your password?</h1>
               <p className="text-sm text-muted-foreground">
-                Enter your email below to login to your account
+                Enter the email address associated with your account and we'll
+                send you a link to reset your password.
               </p>
             </div>
 
@@ -39,30 +40,15 @@ export function LoginForm({
                   required
                 />
               </div>
-              <div>
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" required />
-              </div>
-              <div className="flex justify-between text-sm">
-                <Link
-                  href="authentication/forgot-password"
-                  className="text-blue-600 hover:underline"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
+
               <Button type="submit" className="w-full">
-                Login
+                Reset password
               </Button>
             </form>
 
             <div className="text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <Link
-                href="authentication/signup-form"
-                className="text-blue-600 hover:underline"
-              >
-                Sign up
+              <Link href="/" className="text-blue-600 hover:underline">
+                Back to login
               </Link>
             </div>
           </div>
