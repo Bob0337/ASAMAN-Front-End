@@ -13,14 +13,16 @@ const phoneField: DynamicFormFieldType = {
   label: "Phone Number",
 };
 
-export const studentFields = [
-  ...commonFields,
+export const childFields = [
+  { name: "firstName", type: "text", label: "First Name" },
+  { name: "lastName", type: "text", label: "Last Name" },
+  { name: "email", type: "text", label: "Email" },
   {
-    name: "homeRoom",
+    name: "grade",
     type: "select",
-    label: "Home Room",
+    label: "Grade",
     options: grades,
-    placeholder: "Selece Grade",
+    placeholder: "Select Grade",
   },
   {
     name: "dob",
@@ -31,7 +33,30 @@ export const studentFields = [
     name: "gender",
     type: "select",
     label: "Gender",
-    options: ["male", "female"],
+    options: ["boy", "girl"],
+    placeholder: "Select Gender",
+  },
+];
+
+export const studentFields = [
+  ...commonFields,
+  {
+    name: "grade",
+    type: "select",
+    label: "Grade",
+    options: grades,
+    placeholder: "Select Grade",
+  },
+  {
+    name: "dob",
+    type: "date",
+    label: "Date of Birth",
+  },
+  {
+    name: "gender",
+    type: "select",
+    label: "Gender",
+    options: ["boy", "girl"],
     placeholder: "Selece Gender",
   },
 ];
