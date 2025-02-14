@@ -1,16 +1,16 @@
 "use client";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Plus, SlidersHorizontal } from "lucide-react";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, ReactNode, useState } from "react";
 import TableFilterDropdown from "./dropdowns/TableFilterDropdown";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SearchInput from "./inputs/SearchInput";
 
-type Props = { children?: ReactElement };
+type Props = { children?: ReactNode };
 
 type TabsType = "filter" | "advance" | "";
 
-const TableFilters = (props: Props) => {
+const TableFilters = ({children}: Props) => {
   const [seletedTab, setSeletedTab] = useState<TabsType>("");
 
   return (
@@ -37,15 +37,7 @@ const TableFilters = (props: Props) => {
         </Button>
 
         <div className="ml-auto flex gap-2">
-          <SearchInput />
-          <TableFilterDropdown
-            label="User"
-            values={["String 1", "String 2", "String 3"]}
-            align="end"
-          />
-          <Button size="sm">
-            Add User <Plus />
-          </Button>
+          {children}
         </div>
       </div>
       <TabsContent value="filter" className="flex gap-2">

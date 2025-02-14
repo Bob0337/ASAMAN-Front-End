@@ -1,6 +1,6 @@
 import RoleChip from "@/components/global/micro/RoleChip";
 import { Button } from "@/components/ui/button";
-import { User, UserRoles, type Column } from "@/types/interfaces";
+import { User, AllUserRoles, type Column } from "@/types/interfaces";
 import { Eye, Pencil, Trash2 } from "lucide-react";
 
 export const UsersData: User[] = [
@@ -9,7 +9,7 @@ export const UsersData: User[] = [
     firstName: "John",
     lastName: "Doe",
     email: "john.doe@example.com",
-    role: UserRoles.SuperAdmin,
+    role: AllUserRoles.SuperAdmin,
     status: "active",
   },
   {
@@ -17,7 +17,7 @@ export const UsersData: User[] = [
     firstName: "Jane",
     lastName: "Smith",
     email: "jane.smith@example.com",
-    role: UserRoles.Staff,
+    role: AllUserRoles.Staff,
     status: "active",
   },
   {
@@ -25,7 +25,7 @@ export const UsersData: User[] = [
     firstName: "Bob",
     lastName: "Johnson",
     email: "bob.johnson@example.com",
-    role: UserRoles.CommunicationAdmin,
+    role: AllUserRoles.CommunicationAdmin,
     status: "inactive",
   },
   {
@@ -33,7 +33,7 @@ export const UsersData: User[] = [
     firstName: "Maria",
     lastName: "Rodriguez",
     email: "maria.rodriguez@example.com",
-    role: UserRoles.FinanceAdmin,
+    role: AllUserRoles.FinanceAdmin,
     status: "active",
   },
   {
@@ -41,7 +41,7 @@ export const UsersData: User[] = [
     firstName: "David",
     lastName: "Lee",
     email: "david.lee@example.com",
-    role: UserRoles.ExternalProvider,
+    role: AllUserRoles.ExternalProvider,
     status: "active",
   },
   {
@@ -49,7 +49,7 @@ export const UsersData: User[] = [
     firstName: "Emily",
     lastName: "Chen",
     email: "emily.chen@example.com",
-    role: UserRoles.Parent,
+    role: AllUserRoles.Parent,
     status: "active",
   },
   {
@@ -57,7 +57,7 @@ export const UsersData: User[] = [
     firstName: "Kevin",
     lastName: "White",
     email: "kevin.white@example.com",
-    role: UserRoles.Student,
+    role: AllUserRoles.Student,
     status: "inactive",
   },
   {
@@ -65,7 +65,7 @@ export const UsersData: User[] = [
     firstName: "Sarah",
     lastName: "Taylor",
     email: "sarah.taylor@example.com",
-    role: UserRoles.Staff,
+    role: AllUserRoles.Staff,
     status: "active",
   },
   {
@@ -73,7 +73,7 @@ export const UsersData: User[] = [
     firstName: "Michael",
     lastName: "Brown",
     email: "michael.brown@example.com",
-    role: UserRoles.CommunicationAdmin,
+    role: AllUserRoles.CommunicationAdmin,
     status: "active",
   },
   {
@@ -81,7 +81,7 @@ export const UsersData: User[] = [
     firstName: "Laura",
     lastName: "Davis",
     email: "laura.davis@example.com",
-    role: UserRoles.FinanceAdmin,
+    role: AllUserRoles.FinanceAdmin,
     status: "active",
   },
 ];

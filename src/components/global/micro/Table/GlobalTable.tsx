@@ -90,6 +90,7 @@ const GlobalTable = <T,>({
             values={[10, 25, 50, 75, 100, 200].map(String)}
             defaultValue="10"
             onValueSelect={() => {}}
+            className="w-max min-w-[70px]"
           />
         </div>
 

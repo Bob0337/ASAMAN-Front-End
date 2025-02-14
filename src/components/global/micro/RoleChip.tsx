@@ -1,24 +1,24 @@
 import { cn } from "@/lib/utils";
-import { UserRoles } from "@/types/interfaces";
+import { AllUserRoles } from "@/types/interfaces";
 import { cva } from "class-variance-authority";
 import React from "react";
 
 const RoleChip = ({ role }: { role: string }) => {
   const roleType = (role: string) => {
     switch (role) {
-      case UserRoles.SuperAdmin:
+      case AllUserRoles.SuperAdmin:
         return "bg-red-400";
-      case UserRoles.Staff:
+      case AllUserRoles.Staff:
         return "bg-staff_bg";
-      case UserRoles.CommunicationAdmin:
+      case AllUserRoles.CommunicationAdmin:
         return "bg-communication_manager_bg";
-      case UserRoles.FinanceAdmin:
+      case AllUserRoles.FinanceAdmin:
         return "bg-finance_bg";
-      case UserRoles.ExternalProvider:
+      case AllUserRoles.ExternalProvider:
         return "bg-external_manager_bg";
-      case UserRoles.Parent:
+      case AllUserRoles.Parent:
         return "bg-parent_bg";
-      case UserRoles.Student:
+      case AllUserRoles.Student:
         return "bg-student_bg";
     }
   };
