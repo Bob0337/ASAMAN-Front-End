@@ -20,12 +20,14 @@ const CustomSheet = ({ children, trigger, title, description }: Props) => {
   return (
     <Sheet>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent className="flex w-full !max-w-[686px] flex-col pr-0">
+      <SheetContent className="flex w-full !max-w-[686px] h-full flex-col pr-0">
         <SheetHeader>
           <SheetTitle>{title} </SheetTitle>
           {description && <SheetDescription>{description}</SheetDescription>}
         </SheetHeader>
-        <ScrollArea className="flex-grow pr-6">{children}</ScrollArea>
+        {/* <ScrollArea className="flex-grow pr-6"> */}
+          {children}
+          {/* </ScrollArea> */}
       </SheetContent>
     </Sheet>
   );

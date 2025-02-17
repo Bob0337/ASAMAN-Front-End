@@ -5,12 +5,12 @@ export interface Column<T> {
 }
 
 export enum CommonUserRoles {
-  Staff = "staff",
-  CommunicationAdmin = "communicationAdmin",
-  FinanceAdmin = "financeAdmin",
-  ExternalProvider = "externalProvider",
-  Parent = "parent",
-  Student = "student",
+  Staff = "Staff",
+  CommunicationAdmin = "Communication Admin",
+  FinanceAdmin = "Finance Admin",
+  ExternalProvider = "External Provider",
+  Parent = "Parent",
+  Student = "Student",
 }
 
 export const AllUserRoles = {

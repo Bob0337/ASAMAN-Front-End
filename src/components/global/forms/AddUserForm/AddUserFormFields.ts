@@ -25,6 +25,13 @@ export const childFields = [
     placeholder: "Select Grade",
   },
   {
+    name: "homeRoom",
+    type: "select",
+    label: "Home Room",
+    options: [], // This will be populated dynamically based on selected grade
+    placeholder: "Select Home Room",
+  },
+  {
     name: "dob",
     type: "date",
     label: "Date of Birth",
