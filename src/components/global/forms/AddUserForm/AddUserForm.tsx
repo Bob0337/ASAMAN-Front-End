@@ -191,7 +191,7 @@ const AddUserForm = ({
             key={`child-${index}`}
             className="w-full"
           >
-            <AccordionItem value={`child-${index}`} className="w-full border-0">
+            <AccordionItem value={`child-${index}`} className="w-full border-0 mt-2">
               <AccordionTrigger className="flex h-12 w-full flex-grow justify-between rounded-lg bg-foreground/5 px-4 text-sm font-semibold">
                 <span className="flex w-full items-center gap-2">
                   <span>Student</span>
