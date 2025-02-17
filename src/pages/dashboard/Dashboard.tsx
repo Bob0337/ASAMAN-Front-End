@@ -1,7 +1,6 @@
 "use client";
 
 import { Navbar } from "@/components/navbar/Navbar";
-import { Inter } from "next/font/google";
 
 import { Sidebar } from "@/components/sidebar/Sidebar";
 import React, { useState } from "react";
@@ -15,7 +14,6 @@ import { ActivityEnrollment } from "@/components/activity-enrollment/ActivityEnr
 
 export default function Dashboard() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-
   return (
     <>
       <div className="flex h-screen">
@@ -25,7 +23,7 @@ export default function Dashboard() {
         {/* Main Content */}
         <div className="flex flex-1 flex-col overflow-y-auto">
           <Navbar />
-          <div className="flex-1 space-y-4 p-4 pt-6 md:p-8 bg-[#F5F5FA]">
+          <div className="flex-1 space-y-4 bg-[#F5F5FA] p-4 pt-6 md:p-8">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <MetricCard
                 title="Students"
