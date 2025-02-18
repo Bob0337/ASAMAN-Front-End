@@ -6,6 +6,7 @@ const baseSchema = z.object({
   lastName: z.string().optional(),
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
+  image: z.string().optional(),
 });
 
 const roleSchema = z.object({
@@ -20,6 +21,7 @@ const childSchema = z.object({
   homeRoom: z.string().min(1, "Home Room is required"),
   dob: z.date(),
   gender: z.enum(["boy", "girl"]).optional(),
+  image: z.string().optional(),
 });
 
 const staffSchema = roleSchema.merge(baseSchema);

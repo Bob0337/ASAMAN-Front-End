@@ -5,6 +5,7 @@ const commonFields: DynamicFormFieldType[] = [
   { name: "firstName", type: "text", label: "First Name" },
   { name: "lastName", type: "text", label: "Last Name" },
   { name: "email", type: "text", label: "Email" },
+  { name: "image", type: "image", label: "Upload Photo" },
 ];
 
 const phoneField: DynamicFormFieldType = {
@@ -28,7 +29,7 @@ export const childFields = [
     name: "homeRoom",
     type: "select",
     label: "Home Room",
-    options: [], // This will be populated dynamically based on selected grade
+    options: [],
     placeholder: "Select Home Room",
   },
   {
@@ -42,6 +43,11 @@ export const childFields = [
     label: "Gender",
     options: ["boy", "girl"],
     placeholder: "Select Gender",
+  },
+  { 
+    name: "image", 
+    type: "image", 
+    label: "Upload Photo",
   },
 ];
 
@@ -72,21 +78,15 @@ export const parent1Fields: DynamicFormFieldType[] = [
   { name: "parent1.firstName", type: "text", label: "First Name" },
   { name: "parent1.lastName", type: "text", label: "Last Name" },
   { name: "parent1.email", type: "text", label: "Email" },
-  {
-    name: "parent1.phone",
-    type: "text",
-    label: "Phone Number",
-  },
+  { name: "parent1.phone", type: "text", label: "Phone Number" },
+  { name: "parent1.image", type: "image", label: "Upload Photo" },
 ];
 export const parent2Fields: DynamicFormFieldType[] = [
   { name: "parent2.firstName", type: "text", label: "First Name" },
   { name: "parent2.lastName", type: "text", label: "Last Name" },
   { name: "parent2.email", type: "text", label: "Email" },
-  {
-    name: "parent2.phone",
-    type: "text",
-    label: "Phone Number",
-  },
+  { name: "parent2.phone", type: "text", label: "Phone Number" },
+  { name: "parent2.image", type: "image", label: "Upload Photo" },
 ];
 
 export const nonStudentFields = [...commonFields, phoneField];
