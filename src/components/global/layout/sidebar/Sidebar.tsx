@@ -6,9 +6,9 @@ import { ReactSVG } from "react-svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import "./Sidebar.css"
+import "./Sidebar.css";
 const sidebarLinks = [
   {
     title: "Dashboard",
@@ -43,18 +43,17 @@ const sidebarLinks = [
   },
 ];
 
-
-
 export function Sidebar() {
-
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  
   const pathname = usePathname();
   const router = useRouter();
-  const handleNavigation = useCallback((href: string) => {
-    router.push(href);
-  }, [router]);
+  const handleNavigation = useCallback(
+    (href: string) => {
+      router.push(href);
+    },
+    [router],
+  );
   return (
     <div
       className={cn(
@@ -78,11 +77,11 @@ export function Sidebar() {
       {/* Sidebar Links */}
       <ScrollArea className="flex-1 pt-4">
         <div className="space-y-2 px-2">
-        {sidebarLinks.map((link) => (
+          {sidebarLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleNavigation(link.href)}
-              className={cn(  
+              className={cn(
                 "sidebar-button group flex w-full items-center gap-x-2 rounded-lg px-4 py-2 text-sm font-medium hover:bg-[#011892] hover:text-white",
                 pathname === link.href
                   ? "active bg-[#011892] text-white"
@@ -93,8 +92,8 @@ export function Sidebar() {
               <ReactSVG
                 src={link.icon}
                 beforeInjection={(svg) => {
-                  svg.classList.add('sidebar-icon');
-                  svg.setAttribute('style', 'width: 18px; height: 18px;');
+                  svg.classList.add("sidebar-icon");
+                  svg.setAttribute("style", "width: 18px; height: 18px;");
                 }}
                 className="transition-colors"
               />
@@ -142,7 +141,7 @@ export function Sidebar() {
             isCollapsed && "justify-center",
           )}
         >
-          <ReactSVG src="/assets/svgs/logout.svg" className="h-5 w-5 " />
+          <ReactSVG src="/assets/svgs/logout.svg" className="h-5 w-5" />
           {!isCollapsed && <span>Logout</span>}
         </Button>
       </div>
