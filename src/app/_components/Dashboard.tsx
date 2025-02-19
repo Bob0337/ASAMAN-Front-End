@@ -3,7 +3,7 @@
 import { Navbar } from "@/components/global/layout/navbar/Navbar";
 import { Inter } from "next/font/google";
 
-import { Sidebar } from "@/components/global/layout/sidebar/Sidebar";
+import { Sidebar } from "@/components/global/layout/sidebar/SidebarOld/SidebarOld";
 import React, { useState } from "react";
 import { MetricCard } from "@/app/_components/matricCard/MatricCard";
 import { AttendanceChart } from "@/app/_components/attendance-chart/AttendanceChart";

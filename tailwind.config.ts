@@ -57,7 +57,17 @@ export default {
   			communication_manager_bg: 'hsl(var(--communication-manager-bg))',
   			external_manager_bg: 'hsl(var(--external-manager-bg))',
   			student_bg: 'hsl(var(--student-bg))',
-  			finance_bg: 'hsl(var(--finance-bg))'
+  			finance_bg: 'hsl(var(--finance-bg))',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
