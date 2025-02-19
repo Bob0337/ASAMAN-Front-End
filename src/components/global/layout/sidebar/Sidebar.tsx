@@ -13,7 +13,7 @@ const sidebarLinks = [
   {
     title: "Dashboard",
     icon: "/assets/svgs/dashboard.svg",
-    href: "/",
+    href: "/dashboard",
   },
   {
     title: "User Management",
