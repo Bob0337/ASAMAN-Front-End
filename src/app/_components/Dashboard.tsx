@@ -1,23 +1,23 @@
 "use client";
 
-import { Navbar } from "@/components/global/layout/navbar/Navbar";
-import { Inter } from "next/font/google";
+// import { Navbar } from "@/components/global/layout/navbar/Navbar";
+// import { Inter } from "next/font/google";
 
-import { Sidebar } from "@/components/global/layout/sidebar/SidebarOld/SidebarOld";
-import React, { useState } from "react";
-import { MetricCard } from "@/app/_components/matricCard/MatricCard";
-import { AttendanceChart } from "@/app/_components/attendance-chart/AttendanceChart";
-import { StaffList } from "@/app/_components/staff-list/StaffList";
-import { DocumentsList } from "@/app/_components/document-list/DocumentList";
-import { PaymentChart } from "@/app/_components/payment-chart/PaymentChart";
-import { UpcomingActivities } from "@/app/_components/upcoming-activities/UpcomingActivities";
-import { ActivityEnrollment } from "@/app/_components/activity-enrollment/ActivityEnrollment";
+// import { Sidebar } from "@/components/global/layout/sidebar/SidebarOld/SidebarOld";
+// import React, { useState } from "react";
+// import { MetricCard } from "@/app/_components/matricCard/MatricCard";
+// import { AttendanceChart } from "@/app/_components/attendance-chart/AttendanceChart";
+// import { StaffList } from "@/app/_components/staff-list/StaffList";
+// import { DocumentsList } from "@/app/_components/document-list/DocumentList";
+// import { PaymentChart } from "@/app/_components/payment-chart/PaymentChart";
+// import { UpcomingActivities } from "@/app/_components/upcoming-activities/UpcomingActivities";
+// import { ActivityEnrollment } from "@/app/_components/activity-enrollment/ActivityEnrollment";
 
 export default function Dashboard() {
 
   return (
     <div className="flex-1 space-y-4 p-4 pt-6 md:p-8">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
           title="Students"
           value="200"
@@ -52,7 +52,7 @@ export default function Dashboard() {
         <PaymentChart />
         <ActivityEnrollment />
         <UpcomingActivities />
-      </div>
+      </div> */}
     </div>
   );
 }
