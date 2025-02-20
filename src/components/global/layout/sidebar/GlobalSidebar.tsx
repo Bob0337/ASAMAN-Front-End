@@ -10,6 +10,8 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarSeparator,
+  SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import {
@@ -62,13 +64,29 @@ const sidebarLinks = [
 
 const GLobalSidebar = () => {
   const pathname = usePathname();
+  const { open } = useSidebar();
 
   return (
     <Sidebar collapsible="icon" className="z-50">
       <SidebarHeader className="relative bg-background">
-        <div className="relative flex h-[46px] justify-start">
-          <Image src="/logo.svg" fill alt="Asaman Logo" className="!w-max" />
-        </div>
+        {open ? (
+          <div className="flex items-center">
+            <div className="relative flex-grow flex h-[46px] justify-start">
+              <Image
+                src="/logo.svg"
+                fill
+                alt="Asaman Logo"
+                className="!w-max"
+              />
+            </div>
+            <SidebarTrigger />
+          </div>
+        ) : (
+          <span className="h-[46px] flex items-center">
+
+          <SidebarTrigger />
+          </span>
+        )}
       </SidebarHeader>
       <SidebarSeparator />
       <SidebarContent className="bg-background p-2 pt-4 text-muted-foreground">
@@ -85,7 +103,7 @@ const GLobalSidebar = () => {
                 )}
                 asChild
               >
-                <Link href={href} prefetch>
+                <Link href={href} prefetch className="truncate">
                   <Icon
                     className="!size-5 group-data-[collapsible=icon]:!size-4"
                     {...(href === pathname ? { color: "white" } : {})}
@@ -99,13 +117,15 @@ const GLobalSidebar = () => {
       </SidebarContent>
       <SidebarSeparator />
       <SidebarFooter className="bg-background">
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton className="justify-center text-destructive hover:text-destructive/90">
-              <LogOut className="rotate-180" /> Logout
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <SidebarMenuButton
+          tooltip={"logout"}
+          asChild
+          className="justify-center text-destructive hover:text-destructive/90"
+        >
+          <span>
+            <LogOut className="rotate-180" /> {open && "Logout"}
+          </span>
+        </SidebarMenuButton>
       </SidebarFooter>
     </Sidebar>
   );

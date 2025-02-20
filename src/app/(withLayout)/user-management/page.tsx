@@ -10,35 +10,42 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CustomSheet from "@/components/global/micro/modals/CustomSheet";
 import AddUserForm from "@/components/global/forms/AddUserForm/AddUserForm";
+import FilterSidebarLayout from "@/components/global/layout/sidebar/FilterSidebarLayout";
 
 type Props = {};
 
 const page = (props: Props) => {
   return (
-    <PageContentWrapper className="flex h-full flex-col gap-5">
-      <TableFilters>
-        <SearchInput />
-        <TableFilterDropdown
-          label="User"
-          values={["String 1", "String 2", "String 3"]}
-          align="end"
-        />
-        <CustomSheet
-          title="Add New User"
-          description="Easily add and save new user details."
-          trigger={
-            <Button size="sm">
-              Add User <Plus />
-            </Button>
-          }
-        >
-          <AddUserForm/>
-        </CustomSheet>
-      </TableFilters>
+    <FilterSidebarLayout
+      content={<div className="truncate">
+        User Management</div>}
+    >
+      <PageContentWrapper className="flex h-full flex-col gap-5">
+        <TableFilters>
+          <SearchInput />
+          <TableFilterDropdown
+            label="User"
+            values={["String 1", "String 2", "String 3"]}
+            align="end"
+          />
+          <CustomSheet
+            title="Add New User"
+            description="Easily add and save new user details."
+            trigger={
+              <Button size="sm">
+                Add User <Plus />
+              </Button>
+            }
+          >
+            <AddUserForm />
+          </CustomSheet>
+        </TableFilters>
 
-      <GlobalTable columns={TableColumns} data={UsersData} />
-    </PageContentWrapper>
+        <GlobalTable columns={TableColumns} data={UsersData} />
+      </PageContentWrapper>
+    </FilterSidebarLayout>
   );
 };
+
 
 export default page;
