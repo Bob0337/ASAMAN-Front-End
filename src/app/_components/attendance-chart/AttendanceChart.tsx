@@ -1,146 +1,87 @@
-"use client";
+// "use client";
 
+import Link from "next/link";
+import { students } from "./students";
+import Tooltip from "@/components/global/micro/tooltip/Tooltip";
+import ProgressBar from "@/components/global/micro/progress-bar/ProgressBar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { useState } from "react";
+import MultiSegmentCircularProgressBar from "@/components/global/micro/multi-segment-circular-progress-bar/MultiSegmentCircularProgressBar";
 
-const data = [
-  { name: "Class A", value: 4 },
-  { name: "Class B", value: 2 },
-  { name: "Class C", value: 3.5 },
-  // { name: "Class D", value: 2.8 },
-  // { name: "Class E", value: 4.8 },
-];
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-// Generate years from 1900 to current year + 10
-const currentYear = new Date().getFullYear();
-const years = Array.from({ length: currentYear - 1900 + 11 }, (_, i) =>
-  (1900 + i).toString(),
-).reverse();
+const StudentProgress = ({
+  name,
+  percentage,
+  color,
+  totalStudents,
+  presentStudents,
+  absentStudent,
+}: {
+  name: string;
+  percentage: number;
+  color: string;
+  totalStudents: number;
+  presentStudents: number;
+  absentStudent: number;
+}) => (
+  <div className="flex items-center space-x-4">
+    <div className="w-full flex-col">
+      <Tooltip
+        content={
+          <>
+            <div className="flex justify-between gap-10">
+              <p>Total Students</p>
+              <p>{totalStudents}</p>
+            </div>
+            <div className="flex justify-between gap-10">
+              <p>Present</p>
+              <p>{presentStudents}</p>
+            </div>
+            <div className="flex justify-between gap-10">
+              <p>Absent</p>
+              <p>{absentStudent}</p>
+            </div>
+          </>
+        }
+        position="top"
+      >
+        <div className="w-full">
+          <p className="text-[14px] font-medium text-[#282828]">{name}</p>
+          <div className="flex items-center gap-2">
+            <ProgressBar
+              completed={percentage}
+              bgColor={color}
+              baseBgColor="#ccc9c9"
+            />
+            <p className="text-sm text-gray-600">{percentage}%</p>
+          </div>
+        </div>
+      </Tooltip>
+    </div>
+  </div>
+);
 
 export function AttendanceChart() {
-  const [selectedMonth, setSelectedMonth] = useState("july");
-  const [selectedYear, setSelectedYear] = useState(currentYear.toString());
-
   return (
-    <Card className="overflow-hidden bg-white p-0">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-6">
+    <Card className="col-span-2 overflow-hidden bg-white p-0">
+      <CardHeader className="mx-4 flex flex-row items-center justify-between space-y-0 border-b border-[#ECECEC] px-0 pb-6">
         <CardTitle className="text-base font-normal text-[#000000]">
           Attendance
         </CardTitle>
-        <div className="flex gap-2">
-          <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-            <SelectTrigger className="flex h-7 w-[66px] min-w-[66px] items-center justify-between px-2 text-[10px]">
-              <SelectValue placeholder="Select month" />
-            </SelectTrigger>
-            <SelectContent>
-              {months.map((month) => (
-                <SelectItem
-                  key={month.toLowerCase()}
-                  value={month.toLowerCase()}
-                  className="text-[10px]"
-                >
-                  {month}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="flex h-7 w-[66px] min-w-[66px] items-center justify-between px-2 text-[10px]">
-              <SelectValue placeholder="Select year" />
-            </SelectTrigger>
-            <SelectContent>
-              {years.map((year) => (
-                <SelectItem key={year} value={year} className="text-[10px]">
-                  {year}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+        <Link href="/" className="text-blue-500 hover:underline">
+          View All
+        </Link>
       </CardHeader>
+
       <CardContent className="p-4">
-        <div className="h-[250px] w-full min-w-[270px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart
-              data={data}
-              margin={{ top: 10, right:   20, bottom: 0, left: 5 }}
-            >
-              <defs>
-                <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#0052B4" stopOpacity={0.8} />
-                  <stop offset="100%" stopColor="white" stopOpacity={0.2} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid
-                strokeDasharray="3 3"
-                vertical={false}
-                stroke="#E5E7EB"
-              />
-              <XAxis
-                dataKey="name"
-                stroke="#94A3B8"
-                fontSize={12}
-                tickLine={false}
-                axisLine={false}
-                interval={0}
-              />
-              <YAxis
-                stroke="#94A3B8"
-                fontSize={12}
-                tickLine={false}
-                axisLine={false}
-                domain={[0, 5]}
-                ticks={[1, 2, 3, 4, 5]}
-                dx={-10}
-                tickFormatter={(tick) => `Week ${tick}`}
-              />
-              <ChartTooltip />
-              <Area
-                type="monotone"
-                dataKey="value"
-                stroke="#0066FF"
-                strokeWidth={2}
-                fill="url(#colorValue)"
-                dot={{
-                  stroke: "#0066FF",
-                  strokeWidth: 2,
-                  r: 4,
-                  fill: "#fff",
-                }}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+        <div className="flex flex-col md:flex-row">
+          <MultiSegmentCircularProgressBar students={students} />
+
+          <div className="my-4 w-full rounded-lg bg-[#F4F4F4] p-6 pl-4 md:w-[70%]">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {students.map((student) => (
+                <StudentProgress key={student.id} {...student} />
+              ))}
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>
