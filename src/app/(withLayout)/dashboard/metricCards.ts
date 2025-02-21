@@ -14,7 +14,7 @@ export const metricCards = [
     {
       title: "Externals",
       value: "10",
-      icon: "assets/svgs/students-card.svg",
+      icon: "assets/svgs/users-card.svg",
       link: { text: "View users", href: "#" },
     },
   ];

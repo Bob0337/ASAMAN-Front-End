@@ -30,14 +30,14 @@ const UpcomingEventsChart: FC = () => {
         </Link>
       </CardHeader>
       <CardContent className="p-4">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 max-h-[250px] overflow-y-auto">
           {events.map(({ name, date }, index) => (
             <div
               key={index}
               className="flex w-full gap-2 rounded-lg border border-dashed border-[#DADADC] p-2"
             >
               <Image
-                src="/assets/svgs/enrollment-card.svg"
+                src="/assets/svgs/events.svg"
                 width={48}
                 height={48}
                 alt={`${name} event`}

@@ -75,7 +75,7 @@ export function AttendanceChart() {
         <div className="flex flex-col md:flex-row">
           <MultiSegmentCircularProgressBar students={students} />
 
-          <div className="my-4 w-full rounded-lg bg-[#F4F4F4] p-6 pl-4 md:w-[70%]">
+          <div className="relative my-4 w-full max-h-[200px] overflow-y-auto rounded-lg bg-[#F4F4F4] p-6 pl-4 md:w-[70%]">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {students.map((student) => (
                 <StudentProgress key={student.id} {...student} />
