@@ -6,25 +6,26 @@ export interface Column<T> {
 
 export enum CommonUserRoles {
   Staff = "Staff",
-  CommunicationAdmin = "Communication Admin",
-  FinanceAdmin = "Finance Admin",
+  CommunicationAdmin = "Communication",
+  FinanceAdmin = "Finance",
   ExternalProvider = "External Provider",
   Parent = "Parent",
   Student = "Student",
 }
 
 export const AllUserRoles = {
+  SuperAdmin : "superAdmin",
   ...CommonUserRoles,
-  SuperAdmin: "superAdmin",
 };
 
 export interface User {
   id: number;
   firstName: string;
   lastName: string;
-  email: string;
-  role: string;
-  status: "active" | "inactive";
+  email?: string;
+  role: keyof typeof AllUserRoles;
+  status: "active" | "inactive" | "pending";
+  activity?: string;
 }
 
 export interface DynamicFormFieldType {
