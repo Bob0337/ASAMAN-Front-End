@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import "./Sidebar.css";
+import "./SidebarOld.css"
 const sidebarLinks = [
   {
     title: "Dashboard",
