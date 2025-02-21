@@ -12,17 +12,23 @@ const sidebarSlice = createSlice({
   reducers: {
     toggleGlobalSidebar: (state) => {
       state.isGlobalSidebarOpen = !state.isGlobalSidebarOpen;
+      state.isFilterSidebarOpen = false;
     },
     setGlobalSidebar: (state, action) => {
       state.isGlobalSidebarOpen = action.payload;
+      state.isFilterSidebarOpen = false;
     },
 
     toggleFilterSidebar: (state) => {
+      if (!state.isFilterSidebarOpen === true) state.isGlobalSidebarOpen = false;
       state.isFilterSidebarOpen = !state.isFilterSidebarOpen;
     },
 
     setFilterSidebar: (state, action) => {
+      if (action.payload === true) state.isGlobalSidebarOpen = false;
+
       state.isFilterSidebarOpen = action.payload;
+      // state.isGlobalSidebarOpen = false;
     },
 
     setFilterSidebarContent: (state, action) => {
@@ -37,5 +43,5 @@ export const {
   setGlobalSidebar,
   toggleFilterSidebar,
   toggleGlobalSidebar,
-  setFilterSidebarContent
+  setFilterSidebarContent,
 } = sidebarSlice.actions;
