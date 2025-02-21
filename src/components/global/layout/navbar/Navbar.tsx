@@ -26,11 +26,6 @@ import { RootState } from "@/store/store";
 
 const languages = [
   {
-    code: "en",
-    name: "English",
-    flag: "assets/svgs/uk-flag.svg",
-  },
-  {
     code: "fr",
     name: "French",
     flag: "assets/svgs/french-flag.svg",
@@ -40,6 +35,11 @@ const languages = [
     code: "cn",
     name: "Chinese",
     flag: "assets/svgs/chinese-flag.svg",
+  },
+  {
+    code: "en",
+    name: "English",
+    flag: "assets/svgs/uk-flag.svg",
   },
 ];
 

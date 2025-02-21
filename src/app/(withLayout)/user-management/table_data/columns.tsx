@@ -1,127 +1,165 @@
-import RoleChip from "@/components/global/micro/RoleChip";
+"use client";
+
+import { ColumnDef } from "@tanstack/react-table";
+import { Payment } from "./data";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ArrowUpDown, Eye, MoreHorizontal, MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { User, AllUserRoles, type Column } from "@/types/interfaces";
-import { Eye, Pencil, Trash2 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { User } from "@/types/interfaces";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { StatusSelect } from "@/components/global/micro/dropdowns/StatusSelector";
+import { RoleChip } from "@/components/global/micro/RoleChip";
+import Image from "next/image";
 
-export const UsersData: User[] = [
+export const Columns: ColumnDef<User>[] = [
   {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    email: "john.doe@example.com",
-    role: AllUserRoles.SuperAdmin,
-    status: "active",
-  },
-  {
-    id: 2,
-    firstName: "Jane",
-    lastName: "Smith",
-    email: "jane.smith@example.com",
-    role: AllUserRoles.Staff,
-    status: "active",
-  },
-  {
-    id: 3,
-    firstName: "Bob",
-    lastName: "Johnson",
-    email: "bob.johnson@example.com",
-    role: AllUserRoles.CommunicationAdmin,
-    status: "inactive",
-  },
-  {
-    id: 4,
-    firstName: "Maria",
-    lastName: "Rodriguez",
-    email: "maria.rodriguez@example.com",
-    role: AllUserRoles.FinanceAdmin,
-    status: "active",
-  },
-  {
-    id: 5,
-    firstName: "David",
-    lastName: "Lee",
-    email: "david.lee@example.com",
-    role: AllUserRoles.ExternalProvider,
-    status: "active",
-  },
-  {
-    id: 6,
-    firstName: "Emily",
-    lastName: "Chen",
-    email: "emily.chen@example.com",
-    role: AllUserRoles.Parent,
-    status: "active",
-  },
-  {
-    id: 7,
-    firstName: "Kevin",
-    lastName: "White",
-    email: "kevin.white@example.com",
-    role: AllUserRoles.Student,
-    status: "inactive",
-  },
-  {
-    id: 8,
-    firstName: "Sarah",
-    lastName: "Taylor",
-    email: "sarah.taylor@example.com",
-    role: AllUserRoles.Staff,
-    status: "active",
-  },
-  {
-    id: 9,
-    firstName: "Michael",
-    lastName: "Brown",
-    email: "michael.brown@example.com",
-    role: AllUserRoles.CommunicationAdmin,
-    status: "active",
-  },
-  {
-    id: 10,
-    firstName: "Laura",
-    lastName: "Davis",
-    email: "laura.davis@example.com",
-    role: AllUserRoles.FinanceAdmin,
-    status: "active",
-  },
-];
-
-export const TableColumns: Column<User>[] = [
-  {
-    label: "#",
-    render: (row: User) => row.id + ".",
-  },
-  {
-    label: "First Name",
-    render: (row: User) => row.firstName,
-  },
-  {
-    label: "Last Name",
-    render: (row: User) => row.lastName,
-  },
-  {
-    label: "Email",
-    render: (row: User) => row.email,
-  },
-  {
-    label: "Role",
-    render: (row: User) => <RoleChip role={row.role} />,
-  },
-  {
-    label: "Actions",
-    render: (row: User) => (
-      <div className="flex gap-2">
-        <Button size={"icon"} className="size-8" variant={"ghost"}>
-          <Pencil size={12} />
-        </Button>
-        <Button size={"icon"} className="size-8" variant={"ghost"}>
-          <Eye size={12} />
-        </Button>
-        <Button size={"icon"} className="size-8" variant={"ghost"}>
-          <Trash2 size={12} />
-        </Button>
-      </div>
+    id: "select",
+    header: ({ table }) => (
+      <span className="flex items-center gap-2">
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected()
+            //   ||          (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+          
+        />
+        ID
+      </span>
     ),
-    align: "right",
+    cell: ({ row }) => (
+      <span className="flex items-center gap-2">
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+          className="rounded-md border border-foreground/40 bg-white data-[state=checked]:bg-primary"
+        />
+        {String(row.original.id).padStart(2, "0")}
+      </span>
+    ),
+    enableSorting: false,
+    enableHiding: false,
+    maxSize: 100,
+  },
+  //   {
+  //     accessorKey: "id",
+  //     header: "ID",
+  //   },
+  {
+    accessorKey: "user",
+    header: () => <span className="min-w-[1000px]">User</span>,
+    cell: ({ row }) => {
+      return (
+        <span className="flex items-center gap-1">
+          <span>
+            <Avatar>
+              <AvatarImage src="/assets/svgs/avatar.svg" />
+              <AvatarFallback>IM</AvatarFallback>
+            </Avatar>
+          </span>
+          <span className="flex flex-col">
+            <span>
+              {" "}
+              {row.original.firstName} {row.original.lastName}{" "}
+            </span>
+            <span className="text-muted-foreground">{row.original.email}</span>
+          </span>
+        </span>
+      );
+    },
+    minSize: 300,
+  },
+  {
+    accessorKey: "activity",
+    header: "Activity",
+    cell: ({ row }) => {
+      return <div>{row.original.activity}</div>;
+    },
+    enableSorting: true,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => {
+      return <StatusSelect status={row.original.status} />;
+      return <div>{row.original.status}</div>;
+    },
+    enableSorting: true,
+  },
+  {
+    accessorKey: "role",
+    header: "Role",
+    cell: ({ row }) => {
+      return <RoleChip role={row.original.role} />;
+    },
+    enableSorting: true,
+  },
+  //   {
+  //     accessorKey: "email",
+  //     header: ({ column }) => {
+  //       return (
+  //         <Button
+  //           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //           className="w-full justify-between"
+  //         >
+  //           Email <ArrowUpDown />
+  //         </Button>
+  //       );
+  //     },
+  //   },
+  {
+    id: "actions",
+    header: "Action",
+    cell: ({ row }) => {
+      return (
+        <span className="flex items-center gap-2">
+          <Button variant={"secondary"} size={"icon"} className="size-8 p-0">
+            <Eye className="size-4" />
+          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant={"secondary"}
+                size={"icon"}
+                className="h-8 w-8 p-0"
+              >
+                <span className="sr-only">Open menu</span>
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-muted">
+              <DropdownMenuItem className="cursor-pointer hover:bg-accent">
+                <Image
+                  src={"/icons/svg/pencil.svg"}
+                  width={20}
+                  height={20}
+                  alt="pencil logo"
+                />{" "}
+                Edit User
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer hover:bg-accent">
+                <Image
+                  src={"/icons/svg/archive.svg"}
+                  width={20}
+                  height={20}
+                  alt="pencil logo"
+                />{" "}
+                Archive
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </span>
+      );
+    },
   },
 ];

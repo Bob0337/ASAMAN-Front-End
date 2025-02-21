@@ -1,27 +1,21 @@
 "use client";
 import React from "react";
 import PageContentWrapper from "@/components/global/layout/PageContentWrapper";
-import GlobalTable from "@/components/global/micro/Table/GlobalTable";
-import TableFilters from "@/components/global/micro/TableFilters";
-import { TableColumns, UsersData } from "./table_data/columns";
-import SearchInput from "@/components/global/micro/inputs/SearchInput";
-import TableFilterDropdown from "@/components/global/micro/dropdowns/TableFilterDropdown";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import CustomSheet from "@/components/global/micro/modals/CustomSheet";
-import AddUserForm from "@/components/global/forms/AddUserForm/AddUserForm";
+// import { TableColumns, UsersData } from "./table_data/columnsOld";
 import FilterSidebarLayout from "@/components/global/layout/sidebar/FilterSidebarLayout";
+import DataTable from "@/components/global/micro/Table/CustomDataTable/DataTable";
+import { data } from "./table_data/data";
+import { Columns } from "./table_data/columns";
 
 type Props = {};
 
 const page = (props: Props) => {
   return (
     <FilterSidebarLayout
-      content={<div className="truncate">
-        User Management</div>}
+      content={<div className="truncate">User Management</div>}
     >
-      <PageContentWrapper className="flex h-full flex-col gap-5">
-        <TableFilters>
+      <PageContentWrapper scroll={false} className="flex h-full flex-col gap-5">
+        {/* <TableFilters>
           <SearchInput />
           <TableFilterDropdown
             label="User"
@@ -39,13 +33,14 @@ const page = (props: Props) => {
           >
             <AddUserForm />
           </CustomSheet>
-        </TableFilters>
+        </TableFilters> */}
 
-        <GlobalTable columns={TableColumns} data={UsersData} />
+        {/* <GlobalTable columns={TableColumns} data={UsersData} /> */}
+
+        <DataTable data={data} columns={Columns} />
       </PageContentWrapper>
     </FilterSidebarLayout>
   );
 };
-
 
 export default page;

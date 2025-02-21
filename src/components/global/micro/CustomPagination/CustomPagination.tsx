@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
@@ -9,6 +9,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
+import { ChevronLeft } from "lucide-react";
 import React from "react";
 
 type Props = {
@@ -79,22 +80,28 @@ const CustomPagination = ({
     <Pagination className="m-0 w-max rounded-md bg-background px-2 py-1">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious
-            size="sm"
+          <Button
             onClick={(e) => {
               e.preventDefault();
               if (currentPage > 1) onPageChange(currentPage - 1);
             }}
             aria-disabled={currentPage === 1}
-            className={
-              currentPage === 1 ? "cursor-not-allowed opacity-50" : "cursor-pointer"
-            }
-          />
+            className={cn(
+              "size-8",
+              currentPage === 1
+                ? "cursor-not-allowed opacity-50"
+                : "cursor-pointer",
+            )}
+            variant={"outline"}
+            size="icon"
+          >
+            <ChevronLeft />
+          </Button>
         </PaginationItem>
 
         {pageNumbers.map((page, index) =>
           page === "ellipsis" ? (
-            <PaginationItem key={`ellipsis-${index}`}>
+            <PaginationItem className="size-8" key={`ellipsis-${index}`}>
               <PaginationEllipsis />
             </PaginationItem>
           ) : (
@@ -108,9 +115,12 @@ const CustomPagination = ({
                 isActive={currentPage === page}
                 className={cn(
                   currentPage === page
-                    ? cn(buttonVariants({ variant: "default", size:"sm" }), "hover:text-background")
-                    : buttonVariants({ variant: "outline",  size:"sm" }),
-                  "transition-none hover:transition-none cursor-pointer",
+                    ? cn(
+                        buttonVariants({ variant: "default", size: "sm" }),
+                        "hover:text-background",
+                      )
+                    : buttonVariants({ variant: "outline", size: "sm" }),
+                  "cursor-pointer transition-none hover:transition-none",
                 )}
               >
                 {page}
