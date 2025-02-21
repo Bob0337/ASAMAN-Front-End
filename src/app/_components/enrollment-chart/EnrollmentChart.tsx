@@ -61,7 +61,7 @@ const EnrollmentChart: FC = () => {
         </Link>
       </CardHeader>
       <CardContent className="p-4">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 max-h-[200px] overflow-y-auto">
           {classData.map((classItem) => (
             <div key={classItem.id} className="flex w-full gap-2">
               <Image

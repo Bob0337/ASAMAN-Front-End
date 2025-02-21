@@ -30,7 +30,7 @@ const UpcomingActivitiesChart: FC = () => {
         </Link>
       </CardHeader>
       <CardContent className="p-4">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 max-h-[250px] overflow-y-auto">
           {activities.map(({ name, date }, index) => (
             <div key={index} className="flex w-full gap-2">
               <Image
